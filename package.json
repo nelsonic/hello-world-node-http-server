@@ -1,7 +1,11 @@
 {
   "name": "",
   "version": "",
+  "scripts": {
+    "start": "node node_modules/.bin/http-server"
+  },
   "dependencies": {
+    "http-server": "^0.9.0",
     "live-server": "^1.2.0"
   }
 }
