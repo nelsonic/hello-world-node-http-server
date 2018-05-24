@@ -11,12 +11,15 @@ before_script:
 
   - if [ $TRAVIS_PULL_REQUEST_BRANCH ]; then
       echo "Totes on a Branch! $TRAVIS_PULL_REQUEST_BRANCH";
+      reg="issue#";
+      if [[ $TRAVIS_PULL_REQUEST_BRANCH =~ $reg ]]; then
+        echo "This is a pull request with an issue";
+        IFS=@ read left right <<< "$string";
+        echo "$right";
+      fi
       URL="https://${TRAVIS_PULL_REQUEST_BRANCH}.ademo.app";
       echo $URL;
       
       STATUS=$(curl -s -o /dev/null -I -w "%{http_code}" $URL);
       echo $STATUS;
-
-      reg="issue#";
-      echo $reg;
     fi
