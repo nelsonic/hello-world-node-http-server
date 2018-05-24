@@ -15,7 +15,7 @@ before_script:
       issue="${TRAVIS_PULL_REQUEST_BRANCH}" | awk -F "${reg}" '{print $2}';
       echo "issue $issue";
 
-      IFS="$reg" read branchname issuenumber <<< "$TRAVIS_PULL_REQUEST_BRANCH";
+      IFS=$reg read branchname issuenumber <<< "$TRAVIS_PULL_REQUEST_BRANCH";
       echo "issue >> $issuenumber";
       echo "name >> $branchname";
       
