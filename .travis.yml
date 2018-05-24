@@ -8,12 +8,14 @@ before_script:
   - uname -a 
   - . branch.sh
   - curl -s -o /dev/null -I -w "%{http_code}" https://ademo.app
-  
+
   - if [ $TRAVIS_PULL_REQUEST_BRANCH ]; then
       echo "Totes on a Branch! $TRAVIS_PULL_REQUEST_BRANCH";
       # https://stackoverflow.com/questions/229551/string-contains-in-bash
       if [[ $TRAVIS_PULL_REQUEST_BRANCH = *"issue#"* ]]; then
-        echo "It's there!"
+        echo "This is a pull request with an issue";
+        IFS=@ read left right <<< "$string";
+        echo "$right"
       fi
       URL="https://${TRAVIS_PULL_REQUEST_BRANCH}.ademo.app";
       echo $URL;
