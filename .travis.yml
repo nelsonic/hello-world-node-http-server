@@ -1,9 +1,10 @@
 language: node_js
 node_js:
- - "node"
+  - "node"
 env:
-- MY_VAR=EverythignIsAwesome
-before:
-- uname -a 
-- . branch.sh
-- curl -s -o /dev/null -I -w "%{http_code}" http://www.example.org
+  - MY_VAR=EverythignIsAwesome
+before_script:
+  - echo $TRAVIS_PULL_REQUEST_BRANCH
+  - uname -a 
+  - . branch.sh
+  - curl -s -o /dev/null -I -w "%{http_code}" http://www.example.org
