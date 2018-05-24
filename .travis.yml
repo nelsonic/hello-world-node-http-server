@@ -15,11 +15,11 @@ before_script:
       issue="${TRAVIS_PULL_REQUEST_BRANCH}" | awk -F "${reg}" '{print $2}';
       echo "issue $issue";
 
-      IFS='issue#' read branchname issuenumber <<< "$TRAVIS_PULL_REQUEST_BRANCH";
+      IFS=# read branchname issuenumber <<< "$TRAVIS_PULL_REQUEST_BRANCH";
       echo "issue >> $issuenumber";
       echo "name >> $branchname";
       
-      URL="https://${TRAVIS_PULL_REQUEST_BRANCH}.ademo.app";
+      URL="https://${issue}.ademo.app";
       echo $URL;
       
       STATUS=$(curl -s -o /dev/null -I -w "%{http_code}" $URL);
