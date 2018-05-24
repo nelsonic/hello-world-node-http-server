@@ -9,7 +9,9 @@ before_script:
   - . branch.sh
   - curl -s -o /dev/null -I -w "%{http_code}" https://ademo.app
   - if [ $TRAVIS_PULL_REQUEST_BRANCH ]; then
-      echo "Totes on a Branch!";
-      STATUS=$(curl -s -o /dev/null -I -w "%{http_code}" https://www.example.org);
+      echo "Totes on a Branch! $TRAVIS_PULL_REQUEST_BRANCH";
+      URL = "https://$TRAVIS_PULL_REQUEST_BRANCHademo.app";
+      echo $URL;
+      STATUS = $(curl -s -o /dev/null -I -w "%{http_code}" https://www.example.org);
       echo $STATUS;
     fi
