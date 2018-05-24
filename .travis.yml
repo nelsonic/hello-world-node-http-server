@@ -7,9 +7,9 @@ before_script:
   - echo $TRAVIS_PULL_REQUEST_BRANCH
   - uname -a 
   - . branch.sh
-  - curl -s -o /dev/null -I -w "%{http_code}" http://www.example.org
+  - curl -s -o /dev/null -I -w "%{http_code}" https://ademo.app
   - if [ $TRAVIS_PULL_REQUEST_BRANCH ]; then
-      echo "Totes on a Branch!"
-      STATUS=$(curl -s -o /dev/null -I -w "%{http_code}" http://www.example.org)
-      echo $STATUS
+      echo "Totes on a Branch!";
+      STATUS=$(curl -s -o /dev/null -I -w "%{http_code}" https://www.example.org);
+      echo $STATUS;
     fi
