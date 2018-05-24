@@ -8,8 +8,7 @@ before_script:
   - uname -a 
   - . branch.sh
   - curl -s -o /dev/null -I -w "%{http_code}" http://www.example.org
-  - |
-    if [ $TRAVIS_PULL_REQUEST_BRANCH ];
-    then
+  - if [ $TRAVIS_PULL_REQUEST_BRANCH ]; then
       echo "Totes on a Branch!"
+      curl -s -o /dev/null -I -w "%{http_code}" http://www.example.org
     fi
