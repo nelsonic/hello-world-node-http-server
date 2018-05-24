@@ -14,6 +14,9 @@ before_script:
       reg="issue#";
       issue="${TRAVIS_PULL_REQUEST_BRANCH}" | awk -F "${reg}" '{print $2}';
       echo "issue $issue";
+
+      IFS=# read left right <<< "$TRAVIS_PULL_REQUEST_BRANCH"
+      echo "$right"
       
       URL="https://${TRAVIS_PULL_REQUEST_BRANCH}.ademo.app";
       echo $URL;
