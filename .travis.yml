@@ -12,7 +12,9 @@ before_script:
   - if [ $TRAVIS_PULL_REQUEST_BRANCH ]; then
       echo "Totes on a Branch! $TRAVIS_PULL_REQUEST_BRANCH";
       reg="issue#";
-      echo "${TRAVIS_PULL_REQUEST_BRANCH}" | awk -F "${reg}" '{print $2}'
+      issue="${TRAVIS_PULL_REQUEST_BRANCH}" | awk -F "${reg}" '{print $2}';
+      echo $issue;
+      
       URL="https://${TRAVIS_PULL_REQUEST_BRANCH}.ademo.app";
       echo $URL;
       
