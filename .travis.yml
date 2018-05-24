@@ -13,6 +13,10 @@ before_script:
       echo "Totes on a Branch! $TRAVIS_PULL_REQUEST_BRANCH";
       URL="https://${TRAVIS_PULL_REQUEST_BRANCH}.ademo.app";
       echo $URL;
+      
       STATUS=$(curl -s -o /dev/null -I -w "%{http_code}" $URL);
       echo $STATUS;
+
+      reg="issue#";
+      echo $reg;
     fi
