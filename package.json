@@ -1,11 +1,16 @@
 {
-  "name": "",
-  "version": "",
+  "name": "hello-world-node-http-server",
+  "version": "1.0.0",
+  "description":"the simplest possible http-server for testing purposes",
   "scripts": {
     "start": "node node_modules/.bin/http-server"
   },
   "dependencies": {
-    "http-server": "^0.9.0",
-    "live-server": "^1.2.0"
-  }
+    "http-server": "^0.11.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nelsonic/hello-world-node-http-server.git"
+  },
+  "license": "ISC"
 }
