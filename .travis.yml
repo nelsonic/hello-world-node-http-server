@@ -10,11 +10,12 @@ before_script:
   - curl -s -o /dev/null -I -w "%{http_code}" https://ademo.app
 
   - if [ $TRAVIS_PULL_REQUEST_BRANCH ]; then
-      echo "Totes on a Branch! $TRAVIS_PULL_REQUEST_BRANCH";
+      echo "Git Branch name: $TRAVIS_PULL_REQUEST_BRANCH";
       reg="issue#";
-      issue="${TRAVIS_PULL_REQUEST_BRANCH}" | awk -F "${reg}" '{print $2}';
-      echo $issue;
-      
+
+      IFS=$reg read left right <<< "$TRAVIS_PULL_REQUEST_BRANCH"
+      echo "$right"
+
       URL="https://${TRAVIS_PULL_REQUEST_BRANCH}.ademo.app";
       echo $URL;
       
