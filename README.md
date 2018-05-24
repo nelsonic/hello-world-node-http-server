@@ -1,10 +1,3 @@
-
 # hello-world
 
-
-echo "# hello-world" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin git@github.com:nelsonic/hello-world.git
-git push -u origin master
+The purpose of this repo is to test deployment with the simplest possible node.js app.
