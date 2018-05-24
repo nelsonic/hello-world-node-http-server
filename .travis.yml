@@ -12,7 +12,8 @@ before_script:
   - if [ $TRAVIS_PULL_REQUEST_BRANCH ]; then
       echo "Totes on a Branch! $TRAVIS_PULL_REQUEST_BRANCH";
       # https://stackoverflow.com/questions/229551/string-contains-in-bash
-      if [[ $TRAVIS_PULL_REQUEST_BRANCH =~ .*issue#.* ]]; then
+      reg="issue#";
+      if [[ $TRAVIS_PULL_REQUEST_BRANCH =~ $reg ]]; then
         echo "This is a pull request with an issue";
         IFS=@ read left right <<< "$string";
         echo "$right"
