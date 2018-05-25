@@ -49,5 +49,4 @@ nginx -t && nginx -s reload
 ```
 
 
-      USER="root";
-      SSH="ssh $USER@$IP";
+

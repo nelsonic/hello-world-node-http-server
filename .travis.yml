@@ -9,8 +9,12 @@ env:
 before_install:
   - openssl aes-256-cbc -K $encrypted_77965d5bdd4d_key -iv $encrypted_77965d5bdd4d_iv
     -in deploy_key.enc -out ./deploy_key -d
+  - apt-get install sshpass
 after_success:
   - if [ $SSH_KEY_PASSPHRASE ]; then
       IP="138.68.163.126";
-      echo "$IP";
+      USER="root";
+      SSH="$SSH_KEY_PASSPHRASE | ssh $USER@$IP";
+      RELOAD="nginx -t && nginx -s reload &> /dev/null";
+      $SSH $RELOAD;
     fi
