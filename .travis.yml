@@ -21,6 +21,6 @@ after_success:
       IP="138.68.163.126"; USER="root"; 
       SSH="sshpass -e ssh -i ./deploy_key $USER@$IP"; 
       CMD="pwd";
-      echo "CMD $CMD"; 
+      echo "$SSH $CMD"; 
       $SSH $CMD; 
     fi
