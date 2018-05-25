@@ -15,7 +15,7 @@ before_install:
   - sudo apt-get install sshpass
 before_script:
   - echo -e "Host 138.68.163.126\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-  - chmod 400 ~/.ssh/deploy_key
+  - chmod 400 ./deploy_key
 after_success:
   - if [ $SSH_KEY_PASSPHRASE ]; then
       IP="138.68.163.126";
