@@ -15,6 +15,6 @@ after_success:
       USER="root";
       SSH="$SSH_KEY_PASSPHRASE | ssh -i ./deploy_key $USER@$IP ";
       echo "$SSH"
-      CMD="PWD";
+      CMD="touch travis-was-here.txt";
       $SSH $CMD;
     fi
