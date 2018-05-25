@@ -7,4 +7,21 @@ before_script:
   - echo $TRAVIS_PULL_REQUEST_BRANCH
   - uname -a 
   - . branch.sh
-  - curl -s -o /dev/null -I -w "%{http_code}" http://www.example.org
+  - curl -s -o /dev/null -I -w "%{http_code}" https://ademo.app
+
+  - if [ $TRAVIS_PULL_REQUEST_BRANCH ]; then
+      echo "Git Branch name $TRAVIS_PULL_REQUEST_BRANCH";
+      reg="issue#";
+      issue="${TRAVIS_PULL_REQUEST_BRANCH}" | awk -F "${reg}" '{print $2}';
+      echo "issue $issue";
+
+      IFS=# read branchname issuenumber <<< "$TRAVIS_PULL_REQUEST_BRANCH";
+      echo "issue >> $issuenumber";
+      echo "name >> $branchname";
+      
+      URL="https://${issuenumber}.ademo.app";
+      echo $URL;
+      
+      STATUS=$(curl -s -o /dev/null -I -w "%{http_code}" $URL);
+      echo $STATUS;
+    fi
