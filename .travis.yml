@@ -14,6 +14,7 @@ after_success:
       IP="138.68.163.126";
       USER="root";
       SSH="$SSH_KEY_PASSPHRASE | ssh $USER@$IP";
-      RELOAD="nginx -t && nginx -s reload &> /dev/null";
-      $SSH $RELOAD;
+      echo "$SSH"
+      CMD="PWD";
+      $SSH $CMD;
     fi
