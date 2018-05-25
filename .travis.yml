@@ -18,6 +18,10 @@ before_script:
 - echo -e "Host 138.68.163.126\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - chmod 600 ./deploy_key
 after_success:
-- if [ $SSH_KEY_PASSPHRASE ]; then IP="138.68.163.126"; USER="root"; SSH="sshpass
-  -p $SSH_KEY_PASSPHRASE ssh -i ./deploy_key $USER@$IP"; CMD="touch travis-was-here.txt";
-  echo "CMD $CMD"; $SSH $CMD; fi
+- if [ $SSH_KEY_PASSPHRASE ]; then 
+  IP="138.68.163.126"; USER="root"; 
+  SSH="sshpass -e ssh -i ./deploy_key $USER@$IP"; 
+  CMD="touch travis-was-here.txt";
+  echo "CMD $CMD"; 
+  $SSH $CMD; 
+fi
