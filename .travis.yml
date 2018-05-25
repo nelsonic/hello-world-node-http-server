@@ -9,8 +9,8 @@ env:
 before_install:
   - openssl aes-256-cbc -K $encrypted_77965d5bdd4d_key -iv $encrypted_77965d5bdd4d_iv
     -in deploy_key.enc -out ./deploy_key -d
-before_script:
+after_success:
   - if [ $SSH_KEY_PASSPHRASE ]; then
       IP="138.68.163.126";
-      echo $IP
+      echo "$IP";
     fi
