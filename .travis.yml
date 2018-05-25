@@ -10,18 +10,18 @@ env:
   global:
     secure: hxa/AJvB05uRdkhjfI69UXQz7Yz3lCEiC84t4hTi+Nm9DMvOo2zhn97fVQGsoNWR6+wBghSpAJsOk3vK9b+7PxkEFHwA+VS29qj//WwfJONMtAlgkOcZ0G/fF1kiFHP+Uh58znp6h31gXf4A7msDDg3f+MjQlN9HZQdQtyYSWJeVcrNosYtQKGgzOq3NDCfxkq+QHGOmPHQsHqX5/MKCEbTNzzg8mFlvsqZ7u/Tkk04kYvTu/GL3A6miP6Dp0qH5HX3hLA5maoxCT+Bd9D2Ly3CtJC8eh4fGQ5COwhCmHkSO9D4sdfzx6qc0rucX+71oaXHtbbdCvP5oXMZeoPS2VYqnF7EJwz6dps0UKEiiKdB96LZkAonejKedz0rlXdn6dYKvKLA2yBHDUNJiSBUqGikKkov1nmyKoTMzwtiAnAPiQpH8aYnbmW1xmcP+YzZFVoxCs95kx/0HPVp2SzGevKixhEir3E2LqM08KL6A5Xh2UzvCnwPhCN8iLduSPGolKSLDEDhfgkOkVyhS3biuEgJtpUj4gVDkV6JNmMh+k2Jk9W5zyOOIIb7IkLMym5MOdOBgFvGcmnJdA9vPG26s4H+oQNh752iMXgQv19ZClwTDkRWzbx5LYXzHzApbq6o06O3EhVPgX4qMx+DOghiLLdBv0IKhGn2HTSM+qNExqr4=
 before_install:
-- openssl aes-256-cbc -K $encrypted_77965d5bdd4d_key -iv $encrypted_77965d5bdd4d_iv
-  -in deploy_key.enc -out ./deploy_key -d
-- sudo apt-get install sshpass
-- sshpass -help
+  - openssl aes-256-cbc -K $encrypted_77965d5bdd4d_key -iv $encrypted_77965d5bdd4d_iv
+    -in deploy_key.enc -out ./deploy_key -d
+  - sudo apt-get install sshpass
+  - sshpass -help
 before_script:
-- echo -e "Host 138.68.163.126\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-- chmod 600 ./deploy_key
+  - echo -e "Host 138.68.163.126\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - chmod 600 ./deploy_key
 after_success:
-- if [ $SSH_KEY_PASSPHRASE ]; then 
-  IP="138.68.163.126"; USER="root"; 
-  SSH="sshpass -e ssh -i ./deploy_key $USER@$IP"; 
-  CMD="touch travis-was-here.txt";
-  echo "CMD $CMD"; 
-  $SSH $CMD; 
-fi
+  - if [ $SSH_KEY_PASSPHRASE ]; then 
+      IP="138.68.163.126"; USER="root"; 
+      SSH="sshpass -e ssh -i ./deploy_key $USER@$IP"; 
+      CMD="touch travis-was-here.txt";
+      echo "CMD $CMD"; 
+      $SSH $CMD; 
+    fi
