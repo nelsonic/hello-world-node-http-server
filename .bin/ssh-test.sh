@@ -7,9 +7,14 @@ BRANCH=$(sh $CWD/branch.sh)
 echo "BRANCH $BRANCH"
 IP="138.68.163.126"
 USER="root"
-SSH="ssh $USER@$IP"
 
+PASS=$(which sshpass)
+# echo "$PASS"
+# NOCHECK="-o StrictHostKeyChecking=no"
+SSH="$PASS -e ssh -i ./deploy_key $USER@$IP"
+echo "SSH $SSH"
 # CMD="touch $BRANCH"
-CMD="pwd exit"
+CMD="pwd; ~."
 echo "CMD $CMD"
-$SSH $CMD
+$SSH "$CMD"
+exit
