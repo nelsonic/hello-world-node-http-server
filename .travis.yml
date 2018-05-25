@@ -20,8 +20,8 @@ after_success:
   - if [ $SSHPASS ]; then 
       IP="138.68.163.126"; USER="root"; 
       SSH="sshpass -e ssh -i ./deploy_key $USER@$IP"; 
-      
+
       $SSH <<EOF
-        touch travis-was-here.txt
+        "touch travis-was-here.txt";
       EOF
     fi
