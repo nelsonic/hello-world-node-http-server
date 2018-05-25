@@ -4,7 +4,7 @@ The purpose of this repo is to test deployment with the simplest possible node.j
 
 
 
-# ACID Steps
+# Automated Continuous Integration Deployment (ACID) Steps
 
 ## 1. Get Branch Issue Number
 
