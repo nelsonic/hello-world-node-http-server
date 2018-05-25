@@ -48,3 +48,6 @@ ssh root@138.68.163.126 "sudo dokku certs:add $(sh ./issue.sh) < /etc/letsencryp
 nginx -t && nginx -s reload
 ```
 
+
+      USER="root";
+      SSH="ssh $USER@$IP";
