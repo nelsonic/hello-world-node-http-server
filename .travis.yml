@@ -9,11 +9,12 @@ env:
 before_install:
   - openssl aes-256-cbc -K $encrypted_77965d5bdd4d_key -iv $encrypted_77965d5bdd4d_iv
     -in deploy_key.enc -out ./deploy_key -d
+  - sudo apt-get install sshpass
 after_success:
   - if [ $SSH_KEY_PASSPHRASE ]; then
       IP="138.68.163.126";
       USER="root";
-      SSH="$SSH_KEY_PASSPHRASE | ssh -i ./deploy_key $USER@$IP ";
+      SSH="sshpass -p $SSH_KEY_PASSPHRASE ssh -i ./deploy_key $USER@$IP ";
       CMD="touch travis-was-here.txt";
       echo "$SSH $CMD";
       $SSH $CMD;
