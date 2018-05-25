@@ -10,6 +10,6 @@ USER="root"
 SSH="ssh $USER@$IP"
 
 # CMD="touch $BRANCH"
-CMD="pwd"
+CMD="pwd exit"
 echo "CMD $CMD"
 $SSH $CMD
