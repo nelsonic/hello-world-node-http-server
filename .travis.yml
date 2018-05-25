@@ -13,7 +13,7 @@ after_success:
   - if [ $SSH_KEY_PASSPHRASE ]; then
       IP="138.68.163.126";
       USER="root";
-      SSH="$SSH_KEY_PASSPHRASE | ssh $USER@$IP";
+      SSH="$SSH_KEY_PASSPHRASE | ssh -i ./deploy_key $USER@$IP ";
       echo "$SSH"
       CMD="PWD";
       $SSH $CMD;
