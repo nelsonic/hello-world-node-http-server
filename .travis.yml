@@ -20,8 +20,8 @@ after_success:
   - if [ $SSHPASS ]; then 
       IP="138.68.163.126"; USER="root"; 
       SSH="sshpass -e ssh -i ./deploy_key $USER@$IP"; 
-      DEVNULL=" > /dev/null 2>&1 &"
-      CMD="pwd ";
-      echo "$SSH $CMD $DEVNULL"; 
-      $SSH $CMD $DEVNULL; 
+      EXIT=" exit"
+      CMD="touch travis-was-here.txt";
+      echo "$SSH $CMD $EXIT"; 
+      $SSH $CMD $EXIT; 
     fi
