@@ -9,6 +9,7 @@ IP="138.68.163.126"
 USER="root"
 SSH="ssh $USER@$IP"
 
-CMD="touch $BRANCH"
+# CMD="touch $BRANCH"
+CMD="pwd"
 echo "CMD $CMD"
 $SSH $CMD
