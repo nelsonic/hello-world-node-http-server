@@ -15,9 +15,13 @@ before_install:
 - eval "$(ssh-agent -s)"
 - chmod 600 ./deploy_key
 - sudo apt-get install expect -y --no-install-recommends
-- expect "Enter passphrase for ./deploy_key:"
-    send "$SSH_ASKPASS\r";
-    expect eof
+- expect -c "  
+  ssh-add ./deploy_key
+  expect \"Enter passphrase for ./deploy_key:\" {
+    send \"$SSH_ASKPASS\r\"
+    exp_continue
+  }          
+"
 - ssh-add ./deploy_key
 - echo -e "Host 138.68.163.126\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 after_success:
