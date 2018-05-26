@@ -14,6 +14,11 @@ before_install:
   -in deploy_key.enc -out ./deploy_key -d
 - eval "$(ssh-agent -s)"
 - chmod 600 ./deploy_key
+- expect << EOF
+    expect "Enter passphrase"
+    send "$SSH_ASKPASS\r"
+    expect eof
+  EOF
 - ssh-add ./deploy_key
 - echo -e "Host 138.68.163.126\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 after_success:
