@@ -16,8 +16,8 @@ before_install:
 - chmod 600 ./deploy_key
 - sudo apt-get install expect -y
 - which expect
-- which spawn
 - sh .bin/expect-rsa-key-password.sh
+- ssh-add ./deploy_key
 - echo -e "Host 138.68.163.126\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 after_success:
 - sh .bin/ssh-test.sh
