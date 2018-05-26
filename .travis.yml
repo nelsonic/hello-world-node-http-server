@@ -14,7 +14,7 @@ before_install:
   -in deploy_key.enc -out ./deploy_key -d
 - eval "$(ssh-agent -s)"
 - chmod 600 ./deploy_key
-- sudo apt-get install --dry-run --no-install-recommends expect
+- sudo apt-get install expect -y --no-install-recommends
 - expect << EOF
     expect "Enter passphrase"
     send "$SSH_ASKPASS\r"
