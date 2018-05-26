@@ -11,7 +11,7 @@ env:
   - secure: LjhYCRQSooiR2+wABbttn1+heU7EAQp2/RdXbY9+EVUk7gr54EqOQlxIMgaU72BN7hkomNtjphnY+S2F4SqBxSO/hJ3fd8eEoswNMhzpiINH0Y6EMZWFF/4Ca1+PART2senpaQhawwHme5Bxwe7D8XMh0ijhDXThpYaH4kRvYomqQ1EbL8yAwZrzPpL1xteP3k+HC8cTPQKAlUgwE9eL/EcjTe2/4dCGE3hXCq4OqnqsBmA79pODNWrN+9pfeI5KYJyVj8ZVikrGrngep6gEWqcX0R9+alAx0RsqhkokU/WbJ442zO4li/jPnx6VpcdfY8QAY5m2jDuBLlnELJoWOJbL/VClf5cT5riByzd1rdTTxPU5IJf+lfhuiuVpNAxKjtA7Ah+OJVwEBGxUBE2kymJBHB91qmg5gqbrDFO6IfQSK7stLyD8g/x0bNnfK8H498U0UI0tcEPyyKQL30cl4orOnyP3jXOGMg7OopPlL1drMmsQe5CMeFE69QtVwESELp19yLMXXvZkWySTyOAuqRY0ttQJcaDDIO8xO99hYPrw7w7Nv5fq4JD8pVUcIlf2TG6CM6YB2KmM+A+pLkCJWCAx9jSoH/dfRToVTMfVvrPakQAzEyB2fYez4PNi6C5JVMhvml5HiwG6B8ku4hzWQnOB7ZgP6m/QZh6RAIXySaY=
 before_install:
 - openssl aes-256-cbc -K $encrypted_77965d5bdd4d_key -iv $encrypted_77965d5bdd4d_iv
-  -pass "pass:$SSH_ASKPASS" -in deploy_key.enc -out ./deploy_key -d
+  -in deploy_key.enc -out ./deploy_key -d
 - chmod 600 ./deploy_key
 - ssh-add ./deploy_key
 - echo -e "Host 138.68.163.126\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
