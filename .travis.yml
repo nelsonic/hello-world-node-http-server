@@ -15,5 +15,5 @@ before_install:
 - echo -e "Host 138.68.163.126\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 after_success:
   - if [ $TRAVIS_PULL_REQUEST_BRANCH ]; then 
-      sh .bin/ssh-test.sh;
+      sh .bin/deploy.sh;
     fi
