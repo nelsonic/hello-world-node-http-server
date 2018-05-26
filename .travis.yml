@@ -8,19 +8,10 @@ env:
   matrix:
   - MY_VAR=EverythingIsAwesome
 before_install:
+- openssl aes-256-cbc -K $encrypted_77965d5bdd4d_key -iv $encrypted_77965d5bdd4d_iv
+  -in deploy_key.enc -out ./deploy_key -d
 - eval "$(ssh-agent -s)"
 - chmod 600 ./deploy_key
-# - sudo apt-get install expect -y
-# - which expect
-# - sh .bin/expect-rsa-key-password.sh
-# - sudo apt-get install gcc g++
-- curl -LJO https://raw.githubusercontent.com/clarkwang/passh/master/passh.c
-- gcc -o passh passh.c
-- ls -lath
-- ./passh -h
-# - ssh-add ./deploy_key
 - echo -e "Host 138.68.163.126\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 after_success:
-# - sh .bin/ssh-test.sh
-- ./passh -p $SSH_ASKPASS ssh -i ./deploy_key root@138.68.163.126 pwd
-# - if [ $SSHPASS ]; then ssh -i ./deploy_key root@138.68.163.126 pwd; fi
+- "ssh -i ./deploy_key root@138.68.163.126 pwd"
