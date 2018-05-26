@@ -14,8 +14,9 @@ before_install:
   -in deploy_key.enc -out ./deploy_key -d
 - eval "$(ssh-agent -s)"
 - chmod 600 ./deploy_key
-- sudo apt-get install expect -y --no-install-recommends
+- sudo apt-get install expect -y
 - which expect
+- which spawn
 - sh .bin/expect-rsa-key-password.sh
 - echo -e "Host 138.68.163.126\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 after_success:
