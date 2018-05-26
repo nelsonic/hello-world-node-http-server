@@ -12,10 +12,9 @@ env:
 before_install:
 - openssl aes-256-cbc -K $encrypted_77965d5bdd4d_key -iv $encrypted_77965d5bdd4d_iv
   -pass "pass:$SSH_ASKPASS" -in deploy_key.enc -out ./deploy_key -d
-# - ssh-add ./deploy_key
-before_script:
-- echo -e "Host 138.68.163.126\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - chmod 600 ./deploy_key
+- ssh-add ./deploy_key
+- echo -e "Host 138.68.163.126\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 after_success:
 - sh .bin/ssh-test.sh
 - if [ $SSHPASS ]; then ssh -i ./deploy_key root@138.68.163.126 pwd; fi
