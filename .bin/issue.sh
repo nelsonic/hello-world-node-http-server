@@ -3,9 +3,9 @@
 # [ $TRAVIS_PULL_REQUEST_BRANCH ] && B=$TRAVIS_PULL_REQUEST_BRANCH || B=$(git rev-parse --abbrev-ref HEAD)
 CWD="$PWD/.bin"
 B=$(sh $CWD/branch.sh)
-echo "B $B"
-echo "IFS $IFS"
+# echo "B $B"
+# echo "IFS $IFS"
 IFS=# read BRANCH ISSUE <<< "$B";
-echo "issue >> $ISSUE";
-echo "name >> $BRANCH";
+# echo "issue >> $ISSUE";
+# echo "name >> $BRANCH";
 echo $(($ISSUE + 0)) # typecast to int
