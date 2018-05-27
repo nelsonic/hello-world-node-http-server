@@ -24,7 +24,7 @@ $(git remote add $REMOTE)
 echo "REMOTE $(git config --get remote.dokku.url)"
 $(git fetch --unshallow) # https://github.com/dwyl/learn-devops/issues/33
 $(git config --global push.default simple)
-PUSH="git push dokku $BRANCH:master >> deploylog.txt"
+PUSH="git push dokku $BRANCH:master >> ./log.txt"
 echo "PUSH $PUSH"
 $($PUSH)
 
