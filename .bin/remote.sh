@@ -1,7 +1,7 @@
 #!/bin/bash
 CWD="$PWD/.bin"
 ISSUE=$(sh $CWD/issue.sh)
-# echo "ISSUE $ISSUE"
+echo "remote.sh:4 ISSUE $ISSUE"
 IP="138.68.163.126"
 URL="$IP:$ISSUE"
 REMOTE="dokku dokku@$URL"
