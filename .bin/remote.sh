@@ -1,9 +1,10 @@
 #!/bin/bash
 CWD="$PWD/.bin"
 ISSUE=$(sh $CWD/issue.sh)
-echo "remote.sh:4 ISSUE $ISSUE"
+echo "remote ISSUE $ISSUE"
 IP="138.68.163.126"
 URL="$IP:$ISSUE"
+echo "remote URL $URL"
 REMOTE="dokku dokku@$URL"
 echo "REMOTE $REMOTE"
 # [ $(git config --get remote.dokku.url) ] && $(git remote set-url $REMOTE) || $(git remote add "$REMOTE" &> /dev/null )
