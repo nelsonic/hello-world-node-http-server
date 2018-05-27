@@ -1,7 +1,7 @@
 #!/bin/bash
 CWD="$PWD/.bin"
 ISSUE=$(sh $CWD/issue.sh)
-echo "$ISSUE"
+# echo "$ISSUE"
 IP="138.68.163.126"
 URL="$IP:$ISSUE"
 echo "$URL"
