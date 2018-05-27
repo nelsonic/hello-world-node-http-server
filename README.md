@@ -48,5 +48,12 @@ ssh root@138.68.163.126 "sudo dokku certs:add $(sh ./issue.sh) < /etc/letsencryp
 nginx -t && nginx -s reload
 ```
 
+## Add Dokku User on Server:
 
+If you are using Dokku to deploy your app,
+run the following command on your _server_ instance:
+```
+ssh root@138.68.163.126
+cat ~/.ssh/id_rsa.pub | sudo sshcommand acl-add dokku root
+```
 

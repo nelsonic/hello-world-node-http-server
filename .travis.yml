@@ -13,5 +13,13 @@ before_install:
 - eval "$(ssh-agent -s)"
 - chmod 600 ./deploy_key
 - echo -e "Host 138.68.163.126\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- ssh-add ./deploy_key
 after_success:
-- "ssh -i ./deploy_key root@138.68.163.126 pwd"
+  # Use BASH instead of DASH! see: https://ubuntuforums.org/showthread.php?t=1932504
+  - ls -al /bin/sh
+  - sudo rm /bin/sh && sudo ln -s /bin/bash /bin/sh
+  - ls -al /bin/sh
+  - if [ $TRAVIS_PULL_REQUEST_BRANCH ]; then 
+      echo "TRAVIS_PULL_REQUEST_BRANCH $TRAVIS_PULL_REQUEST_BRANCH";
+      sh .bin/deploy.sh;
+    fi
