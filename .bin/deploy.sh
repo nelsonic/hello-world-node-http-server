@@ -15,7 +15,7 @@ CREATE="dokku apps:create $ISSUE"
 echo "CREATE $CREATE"
 $SSH $CREATE             # create the dokku App
 
-$(sh $CWD/remote.sh &> /dev/null) # Set Git Remote URL
+$(sh $CWD/remote.sh) # Set Git Remote URL
 echo "REMOTE $(git config --get remote.dokku.url)"
 
 PUSH="git push dokku master"
