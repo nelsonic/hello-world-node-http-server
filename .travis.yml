@@ -19,6 +19,7 @@ after_success:
   - ls -al /bin/sh
   - sudo rm /bin/sh && sudo ln -s /bin/bash /bin/sh
   - ls -al /bin/sh
+  # debugging https://github.com/dwyl/learn-devops/issues/34
   - if [ $TRAVIS_PULL_REQUEST_BRANCH ]; then 
       echo "TRAVIS_PULL_REQUEST_BRANCH $TRAVIS_PULL_REQUEST_BRANCH";
       sh .bin/deploy.sh;
