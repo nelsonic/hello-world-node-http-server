@@ -16,15 +16,16 @@ CREATE="dokku apps:create $ISSUE"
 echo "CREATE $CREATE"
 $SSH $CREATE             # create the dokku App
 
+# DELETE the dokku git remote (before re-creating it below):
+git remote rm dokku
+
 # set git remote:
 REMOTE="dokku dokku@$URL"
 echo "REMOTE $REMOTE"
 $(git remote add $REMOTE)
 
 echo "REMOTE $(git config --get remote.dokku.url)"
-# $(git fetch --unshallow) # https://github.com/dwyl/learn-devops/issues/33
-# $(git config --global push.default simple)
-PUSH="git push dokku $BRANCH:master
+PUSH="git push dokku $BRANCH:master"
 echo "PUSH $PUSH"
 $($PUSH)
 
