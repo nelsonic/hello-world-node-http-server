@@ -22,7 +22,7 @@ echo "REMOTE $REMOTE"
 $(git remote add $REMOTE)
 
 echo "REMOTE $(git config --get remote.dokku.url)"
-
+$(git fetch --unshallow) # https://github.com/dwyl/learn-devops/issues/33
 PUSH="git push dokku master"
 echo "PUSH $PUSH"
 $($PUSH)
