@@ -27,6 +27,12 @@ ssh root@138.68.163.126 dokku apps:create $(sh ./issue.sh)
 ```
 git remote add dokku dokku@138.68.163.126:$(sh ./issue.sh)
 ```
+### 3.b
+
+Delete the remote
+```
+git remote rm dokku
+```
 
 ## 4. Git PUSH Branch to Remote
 
