@@ -19,7 +19,7 @@ $SSH $CREATE             # create the dokku App
 # set git remote:
 REMOTE="dokku dokku@$URL"
 echo "REMOTE $REMOTE"
-$(git remote add "$REMOTE")
+$(git remote add $REMOTE)
 
 echo "REMOTE $(git config --get remote.dokku.url)"
 
