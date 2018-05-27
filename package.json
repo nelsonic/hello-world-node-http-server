@@ -13,5 +13,8 @@
     "type": "git",
     "url": "https://github.com/nelsonic/hello-world-node-http-server.git"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": "8.11.2"
+  }
 }

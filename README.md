@@ -51,7 +51,7 @@ ssh root@138.68.163.126 "sudo dokku certs:add $(sh ./issue.sh) < /etc/letsencryp
 ## 6. Reload `nginx`
 
 ```sh
-nginx -t && nginx -s reload
+ssh root@138.68.163.126 "nginx -t && nginx -s reload"
 ```
 
 ## Add Dokku User on Server:
