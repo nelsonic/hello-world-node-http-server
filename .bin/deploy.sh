@@ -1,10 +1,15 @@
 #!/bin/bash
 CWD="$PWD/.bin"
 echo "CWD $CWD"
+BRANCH=$(sh $CWD/branch.sh)
+echo "BRANCH=> $BRANCH"
 $DOKKU_APP=$(sh $CWD/issue.sh)
-echo "ISSUE $DOKKU_APP"
+echo "ISSUE=> $DOKKU_APP"
 COMMIT_HASH=$(sh $CWD/commit-hash.sh)
-IP="138.68.163.126"
+echo "COMMIT_HASH=> $COMMIT_HASH"
+
+# these will need to be environment variables:
+IP="138.68.163.126" 
 USER="root"
 SSH="ssh -i ./deploy_key $USER@$IP"
 URL="$IP:$DOKKU_APP"
@@ -22,7 +27,7 @@ $(git remote add $REMOTE)
 # Travis does a "shallow" git clone so we need to "unshallow" it:
 $(git fetch --unshallow) # see: https://github.com/dwyl/learn-devops/issues/33
 $(git config --global push.default simple)
-PUSH="git push dokku $COMMIT_HASH:refs/heads/master" # branch is always master ...?
+PUSH="git push dokku $COMMIT_HASH:refs/heads/master" # this should work *everywhere*
 echo "PUSH $PUSH"
 $($PUSH)
 
