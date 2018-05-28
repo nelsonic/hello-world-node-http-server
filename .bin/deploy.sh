@@ -9,14 +9,14 @@ COMMIT_HASH=$(sh $CWD/commit-hash.sh)
 echo "COMMIT_HASH=> $COMMIT_HASH"
 
 # these will need to be environment variables:
-IP="138.68.163.126" 
 USER="root"
-SSH="ssh -i ./deploy_key $USER@$IP"
-URL="$IP:$DOKKU_APP"
+SSH="ssh -i ./deploy_key $USER@$SERVER_IP_ADDRESS"
+URL="$SERVER_IP_ADDRESS:$DOKKU_APP"
+echo "URL => $URL"
 
 # create the dokku App
 CREATE="dokku apps:create $DOKKU_APP"
-echo "CREATE $CREATE"
+echo "CREATE => $CREATE"
 $SSH $CREATE
 
 # set git remote for the "review" dokku app:
