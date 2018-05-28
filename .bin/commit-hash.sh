@@ -1,7 +1,8 @@
 #!/bin/bash
-C=$(git rev-parse --verify HEAD)
 if [ "$TRAVIS_PULL_REQUEST" == "true" ]; then 
     latestPRCommit=(${TRAVIS_COMMIT_RANGE//\.\.\./ })
-    C=${latestPRCommit[1]}
+    TRAVIS_HASH=${latestPRCommit[1]}
+    echo "$TRAVIS_HASH"; 
+else 
+    echo $(git rev-parse --verify HEAD); 
 fi
-echo $C
