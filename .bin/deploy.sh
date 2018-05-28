@@ -24,7 +24,7 @@ $(git remote add $REMOTE)
 echo "REMOTE $(git config --get remote.dokku.url)"
 $(git fetch --unshallow) # https://github.com/dwyl/learn-devops/issues/33
 $(git config --global push.default simple)
-PUSH="git push dokku $BRANCH:master" # branch is always master ...?
+PUSH="git push dokku master" # branch is always master ...?
 echo "PUSH $PUSH"
 $($PUSH)
 
