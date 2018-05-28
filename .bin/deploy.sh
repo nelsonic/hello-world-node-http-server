@@ -3,7 +3,7 @@ CWD="$PWD/.bin"
 echo "CWD $CWD"
 BRANCH=$(sh $CWD/branch.sh)
 echo "BRANCH=> $BRANCH"
-$DOKKU_APP=$(sh $CWD/issue.sh)
+DOKKU_APP=$(sh $CWD/issue.sh)
 echo "ISSUE=> $DOKKU_APP"
 COMMIT_HASH=$(sh $CWD/commit-hash.sh)
 echo "COMMIT_HASH=> $COMMIT_HASH"
