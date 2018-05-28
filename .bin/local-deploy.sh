@@ -33,4 +33,4 @@ CERTS="sudo dokku certs:add $ISSUE < /etc/letsencrypt/live/ademo.app/certs.tar"
 $SSH $CERTS
 
 RELOAD="nginx -t && nginx -s reload"
-$SSH $RELOAD
+$SSH $RELOAD 
