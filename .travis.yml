@@ -21,6 +21,8 @@ after_success:
   - ls -al /bin/sh
   - sudo rm /bin/sh && sudo ln -s /bin/bash /bin/sh
   - ls -al /bin/sh
+  - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
+  - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH"
   # debugging https://github.com/dwyl/learn-devops/issues/34
   - echo "TRAVIS_PULL_REQUEST_BRANCH $TRAVIS_PULL_REQUEST_BRANCH"
   - if [ $TRAVIS_PULL_REQUEST_BRANCH ]; then 
