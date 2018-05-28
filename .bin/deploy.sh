@@ -1,4 +1,11 @@
 #!/bin/bash
+# SSH setup tasks:
+$(eval "$(ssh-agent -s)")
+$(chmod 600 ./deploy_key)
+$(echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config)
+$(ssh-add ./deploy_key)
+
+
 CWD="$PWD/.bin"
 echo "CWD $CWD"
 BRANCH=$(sh $CWD/branch.sh)

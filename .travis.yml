@@ -6,11 +6,11 @@ env:
 before_install:
 - openssl aes-256-cbc -K $encrypted_77965d5bdd4d_key -iv $encrypted_77965d5bdd4d_iv
   -in deploy_key.enc -out ./deploy_key -d
-- eval "$(ssh-agent -s)"
-- chmod 600 ./deploy_key
-- echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-- ssh-add ./deploy_key
-- cat ~/.ssh/known_hosts
+# - eval "$(ssh-agent -s)"
+# - chmod 600 ./deploy_key
+# - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+# - ssh-add ./deploy_key
+# - cat ~/.ssh/known_hosts
 after_success:
   # Use BASH instead of DASH! see: https://ubuntuforums.org/showthread.php?t=1932504
   - ls -al /bin/sh && sudo rm /bin/sh && sudo ln -s /bin/bash /bin/sh && ls -al /bin/sh
