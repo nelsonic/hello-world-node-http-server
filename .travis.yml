@@ -14,6 +14,7 @@ before_install:
 - chmod 600 ./deploy_key
 - echo -e "Host 138.68.163.126\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - ssh-add ./deploy_key
+- cat ~/.ssh/known_hosts
 after_success:
   # Use BASH instead of DASH! see: https://ubuntuforums.org/showthread.php?t=1932504
   - ls -al /bin/sh
