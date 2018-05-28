@@ -7,6 +7,7 @@ addons:
 env:
   matrix:
   - MY_VAR=EverythingIsAwesome
+  - SERVER_IP_ADDRESS=138.68.163.126
 before_install:
 - openssl aes-256-cbc -K $encrypted_77965d5bdd4d_key -iv $encrypted_77965d5bdd4d_iv
   -in deploy_key.enc -out ./deploy_key -d
@@ -14,13 +15,11 @@ before_install:
 - chmod 600 ./deploy_key
 - echo -e "Host 138.68.163.126\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - ssh-add ./deploy_key
-# - ssh-keyscan 138.68.163.126 >> ~/.ssh/known_hosts
 - cat ~/.ssh/known_hosts
 after_success:
   # Use BASH instead of DASH! see: https://ubuntuforums.org/showthread.php?t=1932504
-  - ls -al /bin/sh
-  - sudo rm /bin/sh && sudo ln -s /bin/bash /bin/sh
-  - ls -al /bin/sh
+  - ls -al /bin/sh # check what Shell is default
+  - sudo rm /bin/sh && sudo ln -s /bin/bash /bin/sh && ls -al /bin/sh
   - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
   - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH"
   - echo "git rev-parse --abbrev-ref HEAD => $(git rev-parse --abbrev-ref HEAD)"
@@ -30,6 +29,5 @@ after_success:
   # debugging https://github.com/dwyl/learn-devops/issues/34
   - echo "TRAVIS_PULL_REQUEST_BRANCH $TRAVIS_PULL_REQUEST_BRANCH"
   - if [ $TRAVIS_PULL_REQUEST_BRANCH ]; then 
-      echo "TRAVIS_PULL_REQUEST_BRANCH $TRAVIS_PULL_REQUEST_BRANCH";
       sh .bin/deploy.sh;
     fi
