@@ -25,6 +25,8 @@ after_success:
   - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH"
   - echo "git rev-parse --abbrev-ref HEAD => $(git rev-parse --abbrev-ref HEAD)"
   - sh .bin/commit-hash.sh
+  - sh .bin/branch.sh
+  - sh .bin/issue.sh
   # debugging https://github.com/dwyl/learn-devops/issues/34
   - echo "TRAVIS_PULL_REQUEST_BRANCH $TRAVIS_PULL_REQUEST_BRANCH"
   - if [ $TRAVIS_PULL_REQUEST_BRANCH ]; then 
