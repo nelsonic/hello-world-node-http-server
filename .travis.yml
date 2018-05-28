@@ -13,7 +13,7 @@ before_install: # setup the RSA key for use in Dokku Deployment:
 - ssh-add ./deploy_key
 
 after_success:
-  echo $(git rev-parse --verify HEAD)
+  - echo $(git rev-parse --verify HEAD)
   # Use BASH instead of DASH! see: https://ubuntuforums.org/showthread.php?t=1932504
   - ls -al /bin/sh && sudo rm /bin/sh && sudo ln -s /bin/bash /bin/sh && ls -al /bin/sh
   - if [ $TRAVIS_PULL_REQUEST_BRANCH ]; then 
