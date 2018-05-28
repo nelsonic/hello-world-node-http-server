@@ -1,3 +1,4 @@
 #!/bin/bash
 latestPRCommit=(${TRAVIS_COMMIT_RANGE//\.\.\./ })
-echo latestPRCommit[1]
+latestPRCommit=${latestPRCommit[1]}
+echo $latestPRCommit
