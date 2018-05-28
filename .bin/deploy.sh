@@ -6,6 +6,7 @@ echo "ISSUE $ISSUE"
 BRANCH=$(sh $CWD/branch.sh)
 echo "BRANCH $BRANCH"
 echo "TRAVIS_BRANCH $TRAVIS_BRANCH"
+COMMIT_HASH=$(sh $CWD/commit-hash.sh)
 
 IP="138.68.163.126"
 USER="root"
