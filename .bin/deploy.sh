@@ -1,11 +1,4 @@
 #!/bin/bash
-# SSH setup tasks:
-$(eval "$(ssh-agent -s)")
-$(chmod 600 ../deploy_key)
-$(echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config)
-$(ssh-add ./deploy_key)
-
-
 CWD="$PWD/.bin"
 echo "CWD $CWD"
 BRANCH=$(sh $CWD/branch.sh)
@@ -15,7 +8,7 @@ echo "ISSUE=> $DOKKU_APP"
 COMMIT_HASH=$(sh $CWD/commit-hash.sh)
 echo "COMMIT_HASH=> $COMMIT_HASH"
 
-# these will need to be environment variables:
+# these could all be environment variables:
 USER="root"
 SSH="ssh -i ./deploy_key $USER@$SERVER_IP_ADDRESS"
 URL="$SERVER_IP_ADDRESS:$DOKKU_APP"
