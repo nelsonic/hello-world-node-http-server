@@ -1,9 +1,9 @@
 language: node_js
 node_js:
 - node
-addons:
-  ssh_known_hosts:
-  - 138.68.163.126
+# addons:
+#   ssh_known_hosts:
+#   - 138.68.163.126
 env:
   - SERVER_IP_ADDRESS=138.68.163.126
 before_install:
