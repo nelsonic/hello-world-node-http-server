@@ -12,6 +12,7 @@ if [[ "${TRAVIS_EVENT_TYPE}" == "pull_request" ]]; then
     cd ${latestPRCommit}
     SOURCE_BRANCH=($(git branch -r --contains ${latestPRCommit}))
     export SOURCE_BRANCH=${SOURCE_BRANCH/origin\//}
+    export COMMIT_HASH=${latestPRCommit}
     echo "SOURCE_BRANCH=$SOURCE_BRANCH"
     cd -
 fi
