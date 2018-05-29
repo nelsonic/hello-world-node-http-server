@@ -6,6 +6,10 @@ const { EOL } = require('os');
 module.exports = function git_hash (callback) {
   const filepath = resolve(__dirname, '.bin/commit-hash.sh');
   // console.log(filepath);
+
+  if (process.env.TRAVIS) { // see: https://git.io/vh3M7 (yes, it's lame!)
+    return callback(null, process.env.TRAVIS_COMMIT, null);
+  }
   return execFile('sh', [filepath], function(e, stdout, stderr) {
     return callback(e, stdout.replace(EOL, ''), stderr);
   });
