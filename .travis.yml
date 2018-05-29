@@ -11,7 +11,7 @@ before_install: # setup the RSA key for use in Dokku Deployment:
 - chmod 600 ./deploy_key
 - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - ssh-add ./deploy_key
-- echo "sh .bin/commit-hash.sh => $(sh .bin/commit-hash.sh)"
+- sh .bin/commit-hash.sh
 
 after_success:
   - echo "git rev-parse --verify HEAD => $(git rev-parse --verify HEAD)"
