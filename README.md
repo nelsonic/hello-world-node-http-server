@@ -27,6 +27,12 @@ ssh root@138.68.163.126 dokku apps:create $(sh ./issue.sh)
 ```
 git remote add dokku dokku@138.68.163.126:$(sh ./issue.sh)
 ```
+### 3.b
+
+Delete the remote
+```
+git remote rm dokku
+```
 
 ## 4. Git PUSH Branch to Remote
 
@@ -45,7 +51,7 @@ ssh root@138.68.163.126 "sudo dokku certs:add $(sh ./issue.sh) < /etc/letsencryp
 ## 6. Reload `nginx`
 
 ```sh
-nginx -t && nginx -s reload
+ssh root@138.68.163.126 "nginx -t && nginx -s reload"
 ```
 
 ## Add Dokku User on Server:
@@ -57,3 +63,4 @@ ssh root@138.68.163.126
 cat ~/.ssh/id_rsa.pub | sudo sshcommand acl-add dokku root
 ```
 
+>> https://github.com/dwyl/learn-devops/issues/34

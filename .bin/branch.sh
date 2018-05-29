@@ -3,4 +3,3 @@
 # echo "BRANCH $(git rev-parse --abbrev-ref HEAD)"
 [ $TRAVIS_PULL_REQUEST_BRANCH ] && B=$TRAVIS_PULL_REQUEST_BRANCH || B=$(git rev-parse --abbrev-ref HEAD)
 echo $B
-# echo $TRAVIS_PULL_REQUEST_BRANCH
