@@ -15,7 +15,7 @@ http.createServer(function (req, res) {
     res.writeHead(200, {'Content-Type': 'text/html'});
     get_hash(function(e, GIT_COMMIT_HASH, stder) {
       console.log(e, GIT_COMMIT_HASH, stder);
-      res.end(index.replace('{GIT_COMMIT_HASH}', GIT_COMMIT_HASH));
+      res.end(index.replace(/{GIT_COMMIT_HASH}/g, GIT_COMMIT_HASH)); // replace('{GIT_COMMIT_HASH}', );
     })
 
   }
