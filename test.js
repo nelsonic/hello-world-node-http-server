@@ -7,7 +7,7 @@ function exec_sync (cmd) {
   return cp(cmd, { encoding: 'utf8' });
 };
 function cmd() {
-  console.log('$TRAVIS', proces.env.TRAVIS)
+  console.log('$TRAVIS', process.env.TRAVIS)
   console.log('$TRAVIS_COMMIT_RANGE', process.env.TRAVIS_COMMIT_RANGE)
   // if($TRAVIS) {
   //   console.log('$')
