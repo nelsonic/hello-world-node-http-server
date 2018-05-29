@@ -3,6 +3,8 @@ var fs = require('fs');
 var index = fs.readFileSync(__dirname + '/index.html', 'utf8');
 var favicon = fs.readFileSync(__dirname + '/favicon.ico');
 const get_hash = require('./hash.js');
+console.log('cwd', __dirname);
+require('env2')('./ENV');
 
 http.createServer(function (req, res) {
   console.log("URL:", req.url);
