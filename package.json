@@ -3,11 +3,8 @@
   "version": "1.0.0",
   "description": "the simplest possible http-server for testing purposes",
   "scripts": {
-    "start": "node node_modules/.bin/http-server",
+    "start": "node server.js",
     "test": "node test.js"
-  },
-  "dependencies": {
-    "http-server": "^0.11.1"
   },
   "repository": {
     "type": "git",
