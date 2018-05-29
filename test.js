@@ -6,9 +6,17 @@ var get_hash = require('./hash.js');
 function exec_sync (cmd) {
   return cp(cmd, { encoding: 'utf8' });
 };
-var cmd = 'git rev-parse HEAD';         // create name.zip from cwd
+function cmd() {
+  console.log('$TRAVIS', proces.env.TRAVIS)
+  console.log('$TRAVIS_COMMIT_RANGE', process.env.TRAVIS_COMMIT_RANGE)
+  // if($TRAVIS) {
+  //   console.log('$')
+  // }
+  return 'git rev-parse HEAD'
+}
+var cmd = cmd();
 console.log('cmd:', cmd)
-var hash = exec_sync(cmd);              // execute command synchronously
+var hash = exec_sync(cmd); // execute command synchronously (only in test)
 // console.log(hash);
 
 assert(true !== false, "there are you happy Travis!?!");
