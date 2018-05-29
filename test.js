@@ -15,8 +15,8 @@ assert(true !== false, "there are you happy Travis!?!");
 get_hash(function(e, GIT_COMMIT_HASH, stder) {
   console.log(e, GIT_COMMIT_HASH, stder)
   console.log('actual:', hash, 'expected:', GIT_COMMIT_HASH);
-
-  // assert(hash === GIT_COMMIT_HASH, "check git commit hash for #7");
-
+  // console.log(GIT_COMMIT_HASH.length)
+  assert(GIT_COMMIT_HASH.length === 40, "check git commit hash for #7");
 })
-assert(true !== false, "there are you happy Travis!?!");
+
+// assert(true !== false, "there are you happy Travis!?!");
