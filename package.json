@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "the simplest possible http-server for testing purposes",
   "scripts": {
-    "start": "node server.js",
+    "start": "node node_modules/.bin/http-server",
     "test": "node test.js",
     "deploy": "sh .bin/deploy.sh"
   },
@@ -15,5 +15,8 @@
   "engines": {
     "node": "8.11.2",
     "npm": "5.7.1"
+  },
+  "dependencies": {
+    "http-server": "^0.11.1"
   }
 }
