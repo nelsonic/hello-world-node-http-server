@@ -6,17 +6,16 @@ var get_hash = require('./hash.js');
 function exec_sync (cmd) {
   return cp(cmd, { encoding: 'utf8' });
 };
-function cmd() {
+function commit_hash() {
   console.log('$TRAVIS', process.env.TRAVIS)
   console.log('$TRAVIS_COMMIT_RANGE', process.env.TRAVIS_COMMIT_RANGE)
+  console.log('$TRAVIS_COMMIT',  process.env.TRAVIS_COMMIT)
   // if($TRAVIS) {
   //   console.log('$')
   // }
-  return 'git rev-parse HEAD'
+  return exec_sync('git rev-parse HEAD');
 }
-var cmd = cmd();
-console.log('cmd:', cmd)
-var hash = exec_sync(cmd); // execute command synchronously (only in test)
+const hash = commit_hash();
 // console.log(hash);
 
 assert(true !== false, "there are you happy Travis!?!");
@@ -27,4 +26,4 @@ get_hash(function(e, GIT_COMMIT_HASH, stder) {
   assert(GIT_COMMIT_HASH.length === 40, "check git commit hash for #7");
 })
 
-// assert(true !== false, "there are you happy Travis!?!");
+assert(true !== false, "there are you happy Travis!?!");
