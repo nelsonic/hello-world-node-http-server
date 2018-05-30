@@ -3,8 +3,8 @@ CWD="$PWD/.bin"
 echo "CWD $CWD"
 BRANCH=$(sh $CWD/branch.sh)
 echo "BRANCH=> $BRANCH"
-DOKKU_APP=$(sh $CWD/issue.sh)
-echo "ISSUE=> $DOKKU_APP"
+DOKKU_APP=$(sh $CWD/app-name.sh)
+echo "DOKKU_APP=> $DOKKU_APP"
 
 # these could all be environment variables:
 USER="root"
@@ -20,7 +20,7 @@ $SSH $CREATE
 # set git remote for the "review" dokku app:
 REMOTE="dokku dokku@$URL"
 echo "REMOTE $REMOTE"
-if [ "$TRAVIS" == "true" ]; then 
+if [ "$TRAVIS" == "true" ]; then
     $(git remote add $REMOTE)
     # Travis does a "shallow" git clone so we need to "unshallow" it:
     $(git fetch --unshallow) # see: https://github.com/dwyl/learn-devops/issues/33
