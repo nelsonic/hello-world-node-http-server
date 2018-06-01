@@ -44,3 +44,5 @@ $SSH $CERTS
 # Reload (restart) nginx so the new app is served:
 RELOAD="nginx -t && nginx -s reload &> /dev/null"
 $SSH $RELOAD
+
+# $(sh $CWD/docker-exited.sh)
