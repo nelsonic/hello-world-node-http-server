@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node server.js",
     "test": "node test.js",
-    "deploy": "sh .bin/deploy.sh"
+    "deploy": "sh bin/deploy.sh"
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,5 @@
 #!/bin/bash
-CWD="$PWD/.bin"
+CWD="$PWD/bin"
 echo "CWD $CWD"
 BRANCH=$(sh $CWD/branch.sh)
 echo "BRANCH=> $BRANCH"
