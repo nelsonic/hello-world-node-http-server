@@ -30,9 +30,13 @@ else
 fi
 
 # Temporarily Stop Nginx to avoid the git push / build failing:
-KILL_NGINX="nginx -s quit && systemctl start nginx"
+#
+KILL_NGINX="kill $(ps aux | grep '[n]ginx' | awk '{print $2}')"
+SYSTEMCTL_START_NGINX="systemctl start nginx"
 echo "KILL_NGINX => $KILL_NGINX"
+echo "SYSTEMCTL_START_NGINX => $SYSTEMCTL_START_NGINX"
 $SSH $KILL_NGINX
+$SSH $SYSTEMCTL_START_NGINX
 
 # Push *ONLY* the latest commit to dokku (minimalist)
 COMMIT_HASH=$(sh $CWD/commit-hash.sh)
