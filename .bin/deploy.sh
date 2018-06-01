@@ -29,6 +29,10 @@ else
     $(git remote set-url $REMOTE)
 fi
 
+# Temporarily Stop Nginx to avoid the git push / build failing:
+KILL_NGINX="systemctl stop nginx && nginx -s quit"
+echo "KILL_NGINX => $KILL_NGINX"
+$SSH $KILL_NGINX
 
 # Push *ONLY* the latest commit to dokku (minimalist)
 COMMIT_HASH=$(sh $CWD/commit-hash.sh)
