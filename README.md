@@ -103,3 +103,13 @@ run the following command on your _server_ instance:
 ssh root@138.68.163.126
 cat ~/.ssh/id_rsa.pub | sudo sshcommand acl-add dokku root
 ```
+
+
+## Cleanup "Stale" Docker Containers
+
+```
+sh .bin/docker-exited.sh
+```
+
+
+via: https://stackoverflow.com/a/36565322/1148249
