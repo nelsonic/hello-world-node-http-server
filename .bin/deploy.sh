@@ -30,10 +30,9 @@ else
 fi
 
 # Temporarily Stop Nginx to avoid the git push / build failing:
-#
-KILL_NGINX="kill $(ps aux | grep '[n]ginx' | awk '{print $2}')"
-SYSTEMCTL_START_NGINX="systemctl start nginx"
+KILL_NGINX="pkill nginx"
 echo "KILL_NGINX => $KILL_NGINX"
+SYSTEMCTL_START_NGINX="systemctl start nginx"
 echo "SYSTEMCTL_START_NGINX => $SYSTEMCTL_START_NGINX"
 $SSH $KILL_NGINX
 $SSH $SYSTEMCTL_START_NGINX
