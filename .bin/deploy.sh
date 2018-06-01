@@ -30,7 +30,7 @@ else
 fi
 
 # Temporarily Stop Nginx to avoid the git push / build failing:
-KILL_NGINX="systemctl stop nginx && nginx -s quit"
+KILL_NGINX="nginx -s quit && systemctl start nginx"
 echo "KILL_NGINX => $KILL_NGINX"
 $SSH $KILL_NGINX
 
@@ -46,7 +46,7 @@ CERTS="sudo dokku certs:add $DOKKU_APP < /etc/letsencrypt/live/ademo.app/certs.t
 $SSH $CERTS
 
 # Reload (restart) nginx so the new app is served:
-RELOAD="nginx -t && nginx -s reload &> /dev/null"
+RELOAD="systemctl stop nginx && nginx -t && nginx"
 $SSH $RELOAD
 
 # $(sh $CWD/docker-exited.sh)
