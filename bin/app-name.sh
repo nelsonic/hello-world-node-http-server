@@ -10,7 +10,7 @@ IFS=# read BRANCH ISSUE <<< "$B";
 # echo "name >> $BRANCH";
 ISSUE=$(($ISSUE + 0)) # typecast to int
 if [ $B == "master" ]; then
-  echo "hello"
+  echo "hello-world-node"
 elif [ $ISSUE > 0 ]; then
   echo $ISSUE
 fi

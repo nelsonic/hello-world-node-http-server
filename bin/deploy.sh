@@ -2,9 +2,9 @@
 CWD="$PWD/bin"
 echo "CWD $CWD"
 BRANCH=$(sh $CWD/branch.sh)
-echo "BRANCH=> $BRANCH"
+echo "BRANCH => $BRANCH"
 DOKKU_APP=$(sh $CWD/app-name.sh)
-echo "DOKKU_APP=> $DOKKU_APP"
+echo "DOKKU_APP => $DOKKU_APP"
 
 # these could all be environment variables:
 USER="root"
@@ -19,7 +19,7 @@ $SSH $CREATE
 
 # set git remote for the "review" dokku app:
 REMOTE="dokku dokku@$URL"
-echo "REMOTE $REMOTE"
+echo "REMOTE => $REMOTE"
 if [ "$TRAVIS" == "true" ]; then
     $(git remote add $REMOTE)
     # Travis does a "shallow" git clone so we need to "unshallow" it:
@@ -39,7 +39,7 @@ $SSH $SYSTEMCTL_START_NGINX
 
 # Push *ONLY* the latest commit to dokku (minimalist)
 COMMIT_HASH=$(sh $CWD/commit-hash.sh)
-echo "COMMIT_HASH=> $COMMIT_HASH"
+echo "COMMIT_HASH => $COMMIT_HASH"
 PUSH="git push dokku $COMMIT_HASH:refs/heads/master" # this should work *everywhere*
 echo "PUSH $PUSH"
 $($PUSH)
