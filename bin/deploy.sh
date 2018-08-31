@@ -3,6 +3,15 @@ CWD="$PWD/bin"
 echo "CWD $CWD"
 BRANCH=$(sh $CWD/branch.sh)
 echo "BRANCH => $BRANCH"
+
+# if branch is master then continue see: https://git.io/fAWFe
+if [ "$BRANCH" == "master" ]; then
+  echo "branch is $BRANCH so we are going to attempt to deploy ..."
+else
+  echo "branch is $BRANCH so we don't need to deploy see: https://git.io/fAWFe"
+  exit 0
+fi
+
 DOKKU_APP=$(sh $CWD/app-name.sh)
 echo "DOKKU_APP => $DOKKU_APP"
 
