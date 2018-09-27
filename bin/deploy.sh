@@ -12,6 +12,11 @@ SSH="ssh -i ./deploy_key $USER@$SERVER_IP_ADDRESS"
 URL="$SERVER_IP_ADDRESS:$DOKKU_APP"
 echo "URL => $URL"
 
+# *DELETE* any previous version of the App to avoid "orphan" docker containers
+DESTROY="dokku --force apps:destroy $DOKKU_APP"
+echo "DESTROY => $DESTROY"
+$SSH $DESTROY
+
 # create the dokku App
 CREATE="dokku apps:create $DOKKU_APP"
 echo "CREATE => $CREATE"
