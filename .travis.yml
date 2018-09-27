@@ -17,6 +17,7 @@ before_install: # setup the RSA key for use in Dokku Deployment:
 after_success:
   # Use BASH instead of DASH! see: https://ubuntuforums.org/showthread.php?t=1932504
   - ls -al /bin/sh && sudo rm /bin/sh && sudo ln -s /bin/bash /bin/sh && ls -al /bin/sh
-  - if [ $TRAVIS_PULL_REQUEST_BRANCH ]; then
-      sh .bin/deploy.sh;
-    fi
+  # - if [ $TRAVIS_PULL_REQUEST_BRANCH ]; then
+  #     sh .bin/deploy.sh;
+  #   fi
+  - sh .bin/deploy.sh;
