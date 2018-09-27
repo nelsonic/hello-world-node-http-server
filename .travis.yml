@@ -20,4 +20,4 @@ after_success:
   # - if [ $TRAVIS_PULL_REQUEST_BRANCH ]; then
   #     sh .bin/deploy.sh;
   #   fi
-  - sh .bin/deploy.sh;
+  - sh ./bin/deploy.sh;
