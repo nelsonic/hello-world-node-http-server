@@ -13,7 +13,7 @@ URL="$SERVER_IP_ADDRESS:$DOKKU_APP"
 echo "URL => $URL"
 
 # *DELETE* any previous version of the App to avoid "orphan" docker containers
-DESTROY="dokku --force apps:destroy $DOKKU_APP"
+DESTROY="dokku apps:destroy $DOKKU_APP --force"
 echo "DESTROY => $DESTROY"
 $SSH $DESTROY
 
