@@ -19,7 +19,7 @@ module.exports = {
       // GIT remote/branch
       ref: "origin/master",
       // GIT remote
-      repo: "https://github.com/nelsonic/hello-world-node-http-server.git",
+      repo: "git@github.com:nelsonic/hello-world-node-http-server.git",
       // path in the server
       path: "/root",
       // Pre-setup command or path to a script on your local machine
@@ -28,7 +28,7 @@ module.exports = {
       // eg: placing configurations in the shared dir etc
       "post-setup": "ls -la",
       // pre-deploy action
-      "pre-deploy-local": "echo 'This is a local executed command'",
+      // "pre-deploy-local": "echo 'This is a local executed command'",
       // post-deploy action
       "post-deploy": "npm install"
     },
