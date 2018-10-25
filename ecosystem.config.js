@@ -31,7 +31,7 @@ module.exports = {
       "pre-deploy":"git pull",
       // "pre-deploy-local": "echo 'This is a local executed command'",
       // post-deploy action
-      "post-deploy": "npm install"
+      "post-deploy": "npm install && pm2 startOrRestart ecosystem.config.js"
     },
   }
 }
