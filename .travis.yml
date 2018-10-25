@@ -15,9 +15,11 @@ before_install: # setup the RSA key for use in Dokku Deployment:
 - ssh -i ./deploy_key root@138.68.163.126 pwd
 
 after_success:
+  - npm install pm2 -g
   # Use BASH instead of DASH! see: https://ubuntuforums.org/showthread.php?t=1932504
   - ls -al /bin/sh && sudo rm /bin/sh && sudo ln -s /bin/bash /bin/sh && ls -al /bin/sh
   # - if [ $TRAVIS_PULL_REQUEST_BRANCH ]; then
   #     sh .bin/deploy.sh;
   #   fi
   - sh ./bin/deploy.sh;
+  - pm2 deploy production update
