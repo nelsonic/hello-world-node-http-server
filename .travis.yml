@@ -23,5 +23,5 @@ after_success:
   #   fi
   # - sh ./bin/deploy.sh;
   - echo "hai!"
-  - pm2 deploy ecosystem.config.js production update
-  - pm2 deploy ecosystem.config.js production exec "pm2 reload all"
+  - pm2 deploy ecosystem.config.js production update exec "pm2 reload all"
+  # - pm2 deploy ecosystem.config.js production exec "pm2 reload all"
